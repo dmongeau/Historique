@@ -14,6 +14,16 @@ function drawVisualization() {
 		date.setTime(now.getTime()-(daysBefore*DAY*1000));
 		var key = $.datepicker.formatDate('yy-mm-dd',date);
 		var label = $.datepicker.formatDate('D, d M',date);
+		/*var col = [label];
+		if(typeof(EVENTS[key]) != 'undefined') {
+			for(var key in EVENTS[key]) {
+				col.push(0);
+			}
+		} else {
+			for(var key in EVENTS[key]) {
+				col.push(0);
+			}
+		}*/
 		rows.push([label, typeof(EVENTS[key]) != 'undefined' ? EVENTS[key]:0]);
 	}
 	var data = google.visualization.arrayToDataTable(rows);
@@ -41,6 +51,7 @@ function drawVisualization() {
 	};
 	
 	var chart = new google.visualization.LineChart(document.getElementById('timeline'));
+	console.log(chart);
 	chart.draw(data,opts);
 	
 }
