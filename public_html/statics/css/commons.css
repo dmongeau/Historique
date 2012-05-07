@@ -84,20 +84,9 @@ ul.circle, ul.circle li {
 
 /*
  *
- * Forms
- * 
+ * Messages
+ *
  */
-form {
-	margin:20px 0;
-}
-form .field {
-	margin-bottom:10px;
-}
-
-div.closeable {
-	cursor:pointer;
-}
-
 div.success {
 	border: solid 1px #390;
 	color:#390;
@@ -123,6 +112,23 @@ div.error li {
 	margin-bottom:5px;
 }
 
+
+
+/*
+ *
+ * Forms
+ * 
+ */
+form {
+	margin:20px 0;
+}
+form .field {
+	margin-bottom:10px;
+}
+
+div.closeable {
+	cursor:pointer;
+}
 form .field, form .field label {
 	display:block;
 	font-size:12px;
@@ -137,6 +143,8 @@ form input.text, form textarea {
 	padding:2px;
 	font-size:12px;
 	width:375px;
+	padding:2px;
+	border:solid 1px #ccc;
 }
 
 form input.date {
@@ -160,6 +168,12 @@ form .field .note {
 	font-size:10px;
 }
 
+
+/*
+ *
+ * Button
+ *
+ */
 a.button, button {
 	text-decoration:none;
 	padding:3px;
@@ -185,4 +199,31 @@ a.submit, button.submit {
 a.button-small, button.small {
 	padding:2px;
 	font-size:10px;	
+}
+
+
+/*
+ *
+ * Menu
+ *
+ */
+ul.menu {
+	display:block;
+	margin:0;
+	padding:0;
+}
+
+ul.menu li {
+	display:block;
+	margin-right:20px;
+	float:left;
+}
+
+ul.menu li a {
+	display:block;
+	cursor:pointer;
+}
+
+ul.menu li.last {
+	margin:0;
 }

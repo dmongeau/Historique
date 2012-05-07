@@ -48,6 +48,33 @@ return array(
 		)
 	),
 	
+	/*
+	 *
+	 * Événements
+	 *
+	 */
+	'/evenements/ajouter.html' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'events',
+			'action' => 'add'
+		)
+	),
+	'/evenements/:year/:month/:day/:id.html' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'events',
+			'action' => 'view'
+		)
+	),
+	'/evenements/:year/:month/:day/:id/modifier.html' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'events',
+			'action' => 'edit'
+		)
+	),
+	
 	
 	
 	/*
@@ -80,6 +107,14 @@ return array(
 		'params' => array(
 			'module' => 'login',
 			'action' => 'logout'
+		)
+	),
+	
+	
+	'/*' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'home'
 		)
 	),
 	

@@ -9,6 +9,23 @@ body {
 	min-width:980px;
 }
 
+.hr {
+	border-bottom:dotted 1px #000;
+}
+
+/* jQuery UI */
+.ui-datepicker, .ui-autocomplete { font-size:12px; }
+.ui-datepicker-trigger {
+	background:none;
+	position:relative;
+	top:2px;
+	left:2px;
+	border:none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
 
 /*
  *
@@ -21,76 +38,65 @@ body {
 	width:960px;
 	margin:0 auto;
 }
-
 #header {
 	margin:0;
-	background:#ddd;
-	padding:20px;
-}
-
-#header h1 {
-	margin:0;
-	text-align:left;
-}
-
-#header h1 a {
-	text-decoration:none;
-	color:#333;
-}
-
-#header .menu ul {
-	display:block;
-	margin:0;
 	padding:0;
+	padding-bottom:10px;
 }
-
-#header .menu ul li {
-	display:block;
-	margin-right:20px;
-	float:left;
-}
-
-#header .menu ul li a {
-	display:block;
-	cursor:pointer;
-}
-
-#header .menu ul li.last {
-	margin:0;
-}
-
 #content {
 	margin:0;
 	position:relative;
-	background:#eee;
 }
-
-
 #inner {
-	margin:0 10px;
-	padding:20px 0;
+	margin:0;
+	padding:0;
+}
+#footer {
+	position:relative;
+	margin-top:10px;
 }
 
-#footer {
-	text-align:left;
-	background:#ddd;
+
+/*
+ *
+ * Header
+ *
+ */
+#header {
+	border-bottom:dotted 1px #000;
 }
-#footer .inner {
-	padding:10px;
+
+#header h1 {
+	font-size:50px;
+	margin:20px 0;
 }
-#footer .inner a {
-	font-size:12px;
+#header h1 a {
+	color:#000;
 	text-decoration:none;
 }
 
-#footer .inner ul {
-	position:relative;
-	float:left;
+#header .menu {
+	font-size:12px;
 }
 
-#footer .inner li {
-	float:left;
-	margin-right:20px;
-	display:block;
+#header #menu .create {
+	float:right;
 }
 
+
+
+/*
+ *
+ * Footer
+ *
+ */
+#footer {
+	border-top:dotted 1px #000;
+}
+#footer .inner {
+	padding:0;
+}
+#footer .menu {
+	font-size:12px;
+	margin-top:10px;
+}

@@ -21,8 +21,19 @@
     <div id="page">
         <div id="header">
         	<div class="inner">
-            	<h1 align="center"><a href="/">Site web</a></h1>
+            	<h1 align="left"><a href="/">Historique PLQ</a></h1>
                 <div class="clear"></div>
+                <div id="menu">
+                	<div class="create">
+                    	<a href="/evenements/ajouter.html" class="button">+ Ajouter un événement</a>
+                    </div>
+                	<ul class="menu">
+                    	<li><a href="/">Événements</a></li>
+                    	<li><a href="/dossiers/">Dossiers</a></li>
+                    	<li><a href="/a-propos/">À propos</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
             </div>
         </div>
         <div class="clear"></div>
@@ -35,7 +46,7 @@
         <div class="clear"></div>
 		<div id="footer">
 			<div class="inner">
-				<ul>
+				<ul class="menu">
 					<li><a href="/a-propos/">À propos</a></li>
 					<li><a href="/a-propos/contact.html">Contact</a></li>
 					<li><a href="/a-propos/conditions.html">Conditions d'utilisation</a></li>

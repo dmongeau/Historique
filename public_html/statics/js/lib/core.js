@@ -379,3 +379,4 @@ String.prototype.ext = function(ext) {
   else if(this.indexOf("&") >= 0) return this.replace(/\.([a-zA-z]{1,4})\&/gi, ((ext.substr(0,1) == ".") ? ext:"."+ext) + "&");
   else return this.replace(/\.([a-zA-z]{1,4})$/gi, (ext.substr(0,1) == ".") ? ext:"."+ext); 
 };
+

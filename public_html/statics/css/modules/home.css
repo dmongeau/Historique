@@ -1,0 +1,48 @@
+#left {
+	width:640px;
+	float:left;
+	margin-left:20px;
+}
+
+#right {
+	width:300px;
+	float:left;
+}
+
+#timeline {
+	width:100%;
+	height:200px;
+	margin:20px 0;
+}
+
+#tags ul li {
+	margin-bottom:10px;
+}
+#tags ul li a {
+	display:block;
+}
+#tags ul li.selected a {
+	color:#000;
+	font-weight:bold;
+}
+#tags ul li a span {
+	display:block;
+}
+#tags ul li a span.check {
+	width:16px;
+	height:16px;
+	float:left;
+	border:solid 1px #000;
+	margin:0 5px;
+}
+#tags ul li a span.check .color {
+	width:16px;
+	height:16px;
+	display:none;
+}
+#tags ul li.selected a span.check .color {
+	display:block;
+}
+#tags ul li a span.label {
+	float:left;
+}

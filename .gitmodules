@@ -7,3 +7,6 @@
 [submodule "app/Bob"]
 	path = app/Bob
 	url = git@github.com:/dmongeau/Bob.git
+[submodule "public_html/statics/js/lib/Widgets"]
+	path = public_html/statics/js/lib/Widgets
+	url = git://github.com/Commun/Widgets.git
