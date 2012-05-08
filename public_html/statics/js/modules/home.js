@@ -6,7 +6,11 @@ var DAY = 3600*24;
 
 function drawVisualization() {
 	var rows = [];
-	rows.push(['Date', "Nombre d'événements"]);
+	var cols = ['Date'];
+	for(var i = 0; i < EVENTS_COLS.length; i++) {
+		cols.push(EVENTS_COLS[i]);
+	}
+	rows.push(cols);
 	var now = new Date();
 	for(var i = 0; i < (NUMBER_OF_DAYS_BEFORE+1); i++) {
 		var daysBefore = NUMBER_OF_DAYS_BEFORE-i;
@@ -24,8 +28,21 @@ function drawVisualization() {
 				col.push(0);
 			}
 		}*/
-		rows.push([label, typeof(EVENTS[key]) != 'undefined' ? EVENTS[key]:0]);
+		var row = [label];
+		if(typeof(EVENTS[key]) == 'undefined') {
+			for(var k in EVENTS_COLS) {
+				row.push(0);
+			}
+		} else {
+			for(var k in EVENTS_COLS) {
+				row.push(EVENTS[key][EVENTS_COLS[k]]);
+			}
+		}
+		rows.push(row);
 	}
+	console.log(EVENTS_COLS);
+	console.log(cols);
+	console.log(rows);
 	var data = google.visualization.arrayToDataTable(rows);
 	
 	var opts = {

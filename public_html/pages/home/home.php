@@ -5,6 +5,11 @@
 	$this->addScript('/statics/js/modules/home.js');
 	
 	
+	/*
+	 *
+	 * À refaire, vraiment vraiment pas optimisé
+	 *
+	 */
 	
 	Kate::requireModel('Event');
 	
@@ -18,8 +23,22 @@
 		'available' => true
 	);
 	
+	$colsForJS = array('Total des événements');
 	if(isset($PARAMS['wildcard']) && !empty($PARAMS['wildcard'])) {
-		$query['tags'] = explode('/',$PARAMS['wildcard']);
+		$tagsKeys = explode('/',$PARAMS['wildcard']);
+		$Events = new Event();
+		$allEvents = $Events->getItems($query,array('page'=>$page,'rpp'=>$rpp));
+		$query['tags'] = $tagsKeys;
+		$cols = array();
+		Kate::requireModel('Tag');
+		foreach($tagsKeys as $tag) {
+			try {
+				$Tag = new Tag(array('key' => $tag));
+				$tag = $Tag->fetch();
+				$cols[] = $tag;
+				$colsForJS[] = $tag['label'];
+			} catch(Exception $e) {}
+		}
 	}
 	
 	$Events = new Event();
@@ -29,19 +48,55 @@
 	$eventsMaxValue = 0;
 	foreach($events as $event) {
 		$date = $event['date'];
-		if(!isset($eventsForJS[$date])) $eventsForJS[$date] = 0;
-		$eventsForJS[$date]++;
+		if(!isset($eventsForJS[$date])) {
+			$eventsForJS[$date] = array('Total des événements' => 0);
+			if(isset($cols) && sizeof($cols)) {
+				foreach($cols as $col) {
+					$eventsForJS[$date][$col['label']] = 0;
+				}
+			}
+		}
+		if(isset($cols) && sizeof($cols)) {
+			$Event = new Event();
+			$Event->setData($event);
+			$tags = $Event->getTags();
+			foreach($tags as $tag) {
+				foreach($cols as $col) {
+					if((int)$col['tid'] == (int)$tag['tid']) {
+						$eventsForJS[$date][$col['label']]++;
+					}
+				}
+			}
+		} else {
+			$eventsForJS[$date]['Total des événements']++;
+		}
 		if($eventsForJS[$date] > $eventsMaxValue) $eventsMaxValue = $eventsForJS[$date];
 	}
 	
+	if(isset($allEvents)) {
+		foreach($allEvents as $event) {
+			$date = $event['date'];
+			if(!isset($eventsForJS[$date])) {
+				$eventsForJS[$date] = array('Total des événements' => 0);
+				if(isset($cols) && sizeof($cols)) {
+					foreach($cols as $col) {
+						$eventsForJS[$date][$col['label']] = 0;
+					}
+				}
+			}
+			$eventsForJS[$date]['Total des événements']++;
+			if($eventsForJS[$date] > $eventsMaxValue) $eventsMaxValue = $eventsForJS[$date];
+		}
+	}
 	
 	$tags = Kate::getAll('Tag', array(
 		'available' => true,
 		'sort' => 'popular'
 	), array('page'=>1,'rpp'=>20));
 
-?>
 
+
+?>
 <div id="timeline"></div>
 
 <div class="hr"></div>
@@ -65,7 +120,8 @@
     </div>
     
     <script type="text/javascript">
-        var EVENTS = <?=json_encode($eventsForJS)?>;
+        var EVENTS_COLS = <?=json_encode($colsForJS)?>;
+		var EVENTS = <?=json_encode($eventsForJS)?>;
 		var EVENTS_MAX_VALUE = <?=$eventsMaxValue?>;
     </script>
 </div>
