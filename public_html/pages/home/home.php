@@ -94,7 +94,7 @@
 		'sort' => 'popular'
 	), array('page'=>1,'rpp'=>20));
 
-
+	$colorsForJS = array('black','red','blue','green','orange','yellow');
 
 ?>
 <div id="timeline"></div>
@@ -121,6 +121,7 @@
     
     <script type="text/javascript">
         var EVENTS_COLS = <?=json_encode($colsForJS)?>;
+        var EVENTS_COLORS = <?=json_encode($colorsForJS)?>;
 		var EVENTS = <?=json_encode($eventsForJS)?>;
 		var EVENTS_MAX_VALUE = <?=$eventsMaxValue?>;
     </script>
@@ -132,27 +133,37 @@
 		<ul>
         	<li class="selected">
                 <a href="/">
-                    <span class="check"><span class="color" style="background:#03C;"></span></span>
+                    <span class="check"><span class="color" style="background:<?=$colorsForJS[0]?>;"></span></span>
                     <span class="label">Tous les événements</span>
                     <span class="clear"></span>
                 </a>
             </li>
         <?php
         
-        
+			
+		
+        	$i = 1;
+		
             foreach($tags as $tag) {
                     
                 $Tag = new Tag();
                 $Tag->setData($tag);
+				
+				$selected = in_array($tag['clean'],NEC($query,'tags',array()));
+				$color = $selected ? $colorsForJS[$i]:''
+				
 				?>
-                <li class="<?=in_array($tag['clean'],$query['tags']) ? 'selected':''?>">
+                <li class="<?=$selected ? 'selected':''?>">
                 	<a href="<?=$Tag->permalink()?>">
-                        <span class="check"><span class="color"></span></span>
+                        <span class="check"><span class="color" <?=$selected ? 'style="background:'.$color.'"':''?>></span></span>
                         <span class="label"><?=$tag['label']?></span>
                         <span class="clear"></span>
                     </a>
                 </li>
                 <?php
+				
+				if($selected) $i++;
+				
             }
         
         ?>

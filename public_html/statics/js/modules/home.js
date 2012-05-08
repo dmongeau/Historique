@@ -51,6 +51,7 @@ function drawVisualization() {
 			width:"95%",
 			height:'90%'
 		},
+		colors: EVENTS_COLORS,
 		legend: {
 			position: 'none'
 		},
