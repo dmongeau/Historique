@@ -111,6 +111,37 @@ return array(
 	),
 	
 	
+	
+	'/tags/' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'tags'
+		)
+	),
+	'/tags.json' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'tags',
+			'format' => 'json'
+		)
+	),
+	
+	
+	'/dossiers/' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'folders'
+		)
+	),
+	'/dossiers.json' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'folders',
+			'format' => 'json'
+		)
+	),
+	
+	
 	'/*' => array(
 		'page' => 'controller.php',
 		'params' => array(

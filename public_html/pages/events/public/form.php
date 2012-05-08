@@ -61,8 +61,20 @@
     <div class="spacer-small"></div>
     
     <div class="field">
+    	<label>Dossier :</label>
+        <select name="fid" class="folder">
+        <?php if((int)NE($item,'fid',0) != 0) { ?>
+        <option value="<?=$folder['fid']?>" selected="selected"><?=$folder['name']?></option>
+        <?php } ?>
+        </select>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="spacer-small"></div>
+    
+    <div class="field">
     	<label>Tags :</label>
-        <select name="tags[]" class="items" multiple="multiple">
+        <select name="tags[]" class="tags" multiple="multiple">
         	<?php foreach($tags as $tag) { ?>
         	<option value="<?=$tag['tid']?>" selected="selected"><?=$tag['label']?></option>
             <?php } ?>

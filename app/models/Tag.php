@@ -81,7 +81,8 @@ class Tag extends Kate {
 	protected function _queryKey($select, $value) {
 		
 		if(!empty($value)) {
-			$select->where('t.clean = ?',strtolower(trim(Bob::create('string',$value)->toPermalink(),'-')));
+			$clean = strtolower(trim(Bob::create('string',$value)->toPermalink(),'-'));
+			$select->where('t.clean = ?',$clean);
 		}
 		
 		return $select;	
@@ -104,6 +105,26 @@ class Tag extends Kate {
 		if(!empty($value)) {
 			$select->joinLeft(array('et' => 'events_tags'),'et.tid = t.tid',array(null))
 					->where('et.eid = ?',$value);
+		}
+		
+		return $select;	
+	}
+	
+	protected function _queryAutocomplete($select, $value) {
+		
+		if(!empty($value)) {
+			
+			$where = array();
+			$where[] = '('.Gregory::get()->db->quoteInto('t.label LIKE ?',$value.'%').')';
+			$where[] = '('.Gregory::get()->db->quoteInto('t.label LIKE ?','% '.$value.'%').')';
+			
+			$clean = strtolower(trim(Bob::create('string',$value)->toPermalink(),'-'));
+			$where[] = '('.Gregory::get()->db->quoteInto('t.clean LIKE ?',$clean.'%').')';
+			$where[] = '('.Gregory::get()->db->quoteInto('t.clean LIKE ?','% '.$clean.'%').')';
+			
+			$select->where('('.implode(' OR ',$where).')');
+			$select->order('('.implode(' + ',$where).') DESC');
+			
 		}
 		
 		return $select;	
