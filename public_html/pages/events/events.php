@@ -71,7 +71,9 @@ switch($ACTION) {
 		}
 		
 		$this->addStylesheet('/statics/js/lib/Widgets/itemsField/jquery.itemsfield.css');
+		$this->addStylesheet('/statics/css/modules/events.form.css');
 		$this->addScript('/statics/js/lib/Widgets/itemsField/jquery.itemsfield.js');
+		$this->addScript('/statics/js/lib/Widgets/formDialog/jquery.formdialog.js');
 		$this->addScript('/statics/js/modules/events.form.js');
 		
 		include PATH_MODULE_EVENTS_PUBLIC.'/form.php';

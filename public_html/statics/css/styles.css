@@ -25,6 +25,9 @@ body {
 	-moz-border-radius: 0;
 	border-radius: 0;
 }
+.ui-dialog {
+	font-size:12px;
+}
 
 
 /*

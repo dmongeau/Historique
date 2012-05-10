@@ -11,7 +11,17 @@ $(function() {
 		labelAdd : 'Créer un nouveau dossier',
 		source : '/dossiers.json',
 		create : function(add) {
-			alert('add');
+			$('<div></div>').formDialog({
+				url : '/dossiers/ajouter.html',
+				javascript : '/statics/js/modules/folders.form.js',
+				title : 'Créer un nouveau dossier',
+				dialogOptions : {
+					width : 500
+				},
+				success : function(e,ui) {
+					console.log('success',e,ui);
+				}
+			});
 		}
 	});
 	

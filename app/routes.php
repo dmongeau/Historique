@@ -140,6 +140,21 @@ return array(
 			'format' => 'json'
 		)
 	),
+	'/dossiers/ajouter.html' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'folders',
+			'action' => 'add'
+		)
+	),
+	'/dossiers/ajouter.json' => array(
+		'page' => 'controller.php',
+		'params' => array(
+			'module' => 'folders',
+			'action' => 'add',
+			'format' => 'json'
+		)
+	),
 	
 	
 	'/*' => array(

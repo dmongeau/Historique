@@ -69,7 +69,7 @@ switch($ACTION) {
 		$this->addScript('/statics/js/lib/Widgets/itemsField/jquery.itemsfield.js');
 		$this->addScript('/statics/js/modules/folders.form.js');
 		
-		include PATH_MODULE_EVENTS_PUBLIC.'/form.php';
+		include PATH_MODULE_FOLDERS_PUBLIC.'/form.php';
 		
 		
 	break;
